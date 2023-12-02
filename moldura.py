@@ -23,7 +23,7 @@ def converte(rede_social=None):
     if rede_social is None:
         return False
 
-    if rede_social in ['instagram', 'insta','pinterest','tiktok','whatssap','youtube']:
+    if rede_social:
         path_ = os.path.dirname(os.path.abspath(__file__))
         arquivos = os.listdir(os.path.join(path_, 'videos'))
         arquivos_video = [arquivo for arquivo in arquivos if arquivo.lower().endswith('.mp4')]
