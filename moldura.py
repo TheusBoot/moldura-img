@@ -48,7 +48,7 @@ def converte(rede_social=None):
 
             #compose.write_videofile(f'video_{arquivos_video.index(arquivo) + 1}.mp4')
             #compose.write_videofile(f'video_{arquivos_video.index(arquivo) + 1}.mp4', codec='libx264', audio_codec='aac')
-            compose.write_videofile(f'video_{arquivos_video.index(arquivo) + 1}.mp4', codec="libx264", preset="ultrafast", bitrate="2M",threads=8, fps=24)
+            compose.write_videofile(f'video_{arquivos_video.index(arquivo) + 1}.mp4', codec="libx264", preset="ultrafast", bitrate="2M",threads=4, fps=24)
 
             #audio.write_audiofile(f'audio_{arquivos_video.index(arquivo) + 1}.mp3')
 
