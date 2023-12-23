@@ -15,9 +15,12 @@
     #compose.write_videofile('teste.mp4')  #arquivo de saida <3 
 
 
-from moviepy.editor import AudioFileClip, VideoFileClip, ImageClip, CompositeVideoClip
+from moviepy.editor import VideoFileClip, CompositeVideoClip, ImageClip
+from moviepy.editor import AudioFileClip,VideoFileClip,ImageClip,CompositeVideoClip,ImageClip
+
 import os
 import sys
+import moviepy.editor as mpy
 
 def converte(rede_social=None):
     if rede_social is None:
@@ -33,24 +36,22 @@ def converte(rede_social=None):
 
         for arquivo in arquivos_video:
             caminho_entrada = os.path.join(path_, 'videos', arquivo)
-            video = VideoFileClip(caminho_entrada).resize((791, 1420)).set_pos(('center', 273))
+            video = mpy.VideoFileClip(caminho_entrada).resize((360, 640)).set_pos(('center', 273))
             tempo = video.duration
 
             _arquivos_ = os.path.join(path_, 'templetes')
-            image = ImageClip(os.path.join(_arquivos_, f"{rede_social}.png"), duration=tempo).resize((1080, 1920)).set_pos('center')
+            image = ImageClip(os.path.join(_arquivos_, f"{rede_social}.png"), duration=tempo).resize((640, 1280)).set_pos('center')
 
             audio = AudioFileClip(caminho_entrada)
 
-            compose = CompositeVideoClip([image, video])
+            compose = mpy.CompositeVideoClip([image, video])
             compose.audio = audio
 
             os.chdir(pasta_saida)
 
-            #compose.write_videofile(f'video_{arquivos_video.index(arquivo) + 1}.mp4')
-            #compose.write_videofile(f'video_{arquivos_video.index(arquivo) + 1}.mp4', codec='libx264', audio_codec='aac')
-            compose.write_videofile(f'video_{arquivos_video.index(arquivo) + 1}.mp4', codec="libx264", preset="ultrafast", bitrate="2M",threads=4, fps=24)
+            compose.write_videofile(f'video_{arquivos_video.index(arquivo) + 1}.mp4', codec="libx264", preset="fast", bitrate="1M", threads=32, fps=24)
 
-            #audio.write_audiofile(f'audio_{arquivos_video.index(arquivo) + 1}.mp3')
+            # audio.write_audiofile(f'audio_{arquivos_video.index(arquivo) + 1}.mp3')
 
             os.chdir(path_)  # Voltar para o diretório original após a conclusão do loop
 
