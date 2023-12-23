@@ -41,7 +41,14 @@ def converte(rede_social=None,qt=2):
 name_arg = sys.argv[1]
 
 if len(sys.argv) > 1:
-    th = sys.argv[2]
-    converte(rede_social=name_arg,qt=th)
+    if len(sys.argv) > 2:
+        th = sys.argv[2]
+        converte(rede_social=name_arg,qt=th)
+    
+    else:
+        
+        converte(rede_social=nome_arg)
 else:
     print('DIGITE UM NOME')
+    print('Exemplo: python moldura.py story 2')
+    print('ou python moldura.py story ')
