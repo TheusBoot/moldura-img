@@ -35,3 +35,7 @@ Você pode encontrar as imagens feitas, logo após a finalização do script, na
 
 ### Videos_convertidos
 *NÃO ATRIBUIDA AINDA*
+
+### compilados
+*Para Uitlizar o arquivo (compilados), basta você adicionar o comando no terminal:*
+``` python compilados.py```shell
